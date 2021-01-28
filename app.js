@@ -6,14 +6,17 @@ const para = document.getElementById("timer");
 const start = document.getElementById("start");
 const stop = document.getElementById("stop");
 const reset = document.getElementById("reset");
+const audio = new Audio("sounds/Sparkle - Your Name.mp3");
 
 let mainCount = mainTime*60;
 let breakCount = breakTime*60; 
 function mainTimer()
 {
-
+   
    if(mainCount == "0"){
+    audio.play();
     para.textContent = `00:00`;
+    if(alert("Time to watch anime!")){audio.pause();}
     breakTimer();
     mainCount = mainTime*60;
     return;
@@ -33,6 +36,8 @@ function breakTimer()
     if(breakCount == "0")
    {
        para.textContent = "00:00";
+       audio.play();
+       if(alert("Time to get back to work")){audio.stop();}
        mainTimer();
        breakCount = breakTime*60;
        return;
