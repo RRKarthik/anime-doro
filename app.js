@@ -1,6 +1,4 @@
 const para = document.getElementById("timer");
-const start = document.getElementById("start");
-const stop = document.getElementById("stop");
 const reset = document.getElementById("reset");
 const audio = new Audio("sounds/Sparkle - Your Name.mp3");
 const work = document.getElementById("work");
@@ -12,6 +10,7 @@ let breakT;
 let flag = 1;
 let message;
 let counter = 1 * 60;
+let section = 1;
 function timer()
 {
     if(counter == "0")
@@ -50,6 +49,7 @@ function mainSetter()
  if(mFlag == 1)
  {
      flag = 1;
+     section = 1;
      message = "Go watch some anime";
   clearInterval(breakT);
   counter = 1 * 60;
@@ -63,6 +63,7 @@ function breakSetter()
 {  if(bFlag == 1)
     {
         flag = 1;
+        section = 0;
         message = "Senpai wants you to get  back to work";
     clearInterval(mainT);
     counter = 2 * 60;
@@ -72,5 +73,15 @@ function breakSetter()
     }
 }
 
+function resetter()
+{
+    if(section == 1){
+        counter = 1 * 60;
+    }else{
+        counter = 2 * 60;
+    }
+}
+
 work.addEventListener("click",mainSetter);
 rest.addEventListener("click",breakSetter);
+reset.addEventListener("click",resetter);
