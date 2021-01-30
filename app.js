@@ -9,7 +9,7 @@ let mainT;
 let breakT; 
 let flag = 1;
 let message;
-let counter = 1 * 60;
+let counter = 50 * 60;
 let section = 1;
 function timer()
 {
@@ -20,6 +20,7 @@ function timer()
         if(flag == 1)
         {
             flag = 0;
+        audio.currentTime = 0;   
         audio.play();
         audio.loop = false;
         function after()
@@ -52,7 +53,7 @@ function mainSetter()
      section = 1;
      message = "Go watch some anime";
   clearInterval(breakT);
-  counter = 1 * 60;
+  counter = 50 * 60;
   mainT = setInterval(timer,1000);
   mFlag = 0;
   bFlag = 1;
@@ -66,7 +67,7 @@ function breakSetter()
         section = 0;
         message = "Senpai wants you to get  back to work";
     clearInterval(mainT);
-    counter = 2 * 60;
+    counter = 20 * 60;
     breakT = setInterval(timer,1000);
     bFlag = 0;
     mFlag = 1;
@@ -76,9 +77,9 @@ function breakSetter()
 function resetter()
 {
     if(section == 1){
-        counter = 1 * 60;
+        counter = 50 * 60;
     }else{
-        counter = 2 * 60;
+        counter = 20 * 60;
     }
 }
 
